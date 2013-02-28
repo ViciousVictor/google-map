@@ -1,0 +1,428 @@
+
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" media="screen" href="http://www.labor.ny.gov/css/apps/v.0.4.6/css/ux-style.min.css" >
+<link rel="stylesheet" type="text/css" media="print" href="http://www.labor.ny.gov/css/apps/v.0.4.6/css/print.min.css" >
+<link rel="stylesheet" type="text/css" href="http://10.72.88.71/css/apps/css/ux-internet-content-utility.css?date=03012012" >
+<link rel="stylesheet" type="text/css" href="http://10.72.88.71/css/apps/css/ux-internet-temp.css?date=10142011" > 
+  
+<title>Google Map Prototype - New York State Department of Labor</title>
+
+
+<style>
+#map_canvas{
+	height:400px;
+	width:100%;
+}
+
+</style>
+
+		
+   
+	<script src="http://www.labor.ny.gov/css/apps/v.0.4.6/js/modernizr.min.js"></script>
+</head>
+    <!--[if lt IE 7 ]> <body class=" ie6 ux-website"> <![endif]-->
+    <!--[if IE 7 ]>    <body class=" ie7 ux-website"> <![endif]-->
+    <!--[if IE 8 ]>    <body class=" ie8 ux-website"> <![endif]-->
+
+    <!--[if IE 9 ]>    <body class=" ie9 ux-website"> <![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><!--> 
+	<body class=" ux-website" >
+	<!--<![endif]--> 
+	
+	
+		<div id="dol-skip-navigation">
+			<a tabindex="1" href="#content-anchor">Skip to Content</a>	
+			<a tabindex="1" href="#mega-menu-anchor">Skip to Navigation</a>	
+		</div>
+	
+	
+	<div id="ux-notification-container">
+		<div class="ux-content-wrapper">
+			<div id="ux-action-required-notifications">
+				<div class="arn-tray">
+				</div>
+			</div>
+			<div id="ux-genaric-notifications">
+			</div>
+		</div>
+	</div>
+
+	<div id="gov-banner-outer" class="container_16">
+
+	<div id="gov-banner-inner">
+		<a href="http://www.ny.gov/" target="_blank"><img id="nys-image" src="http://w2ua0320c3d:8080/UX/bootstrap/assets/v.0.4.6/images/banner_img1.png" alt="NY.gov Portal" /></a>
+		<a href="http://www.nysegov.com/citGuide.cfm?superCat=102&cat=449&content=main" target="_blank"><img id="nys-agency-listing" src="http://w2ua0320c3d:8080/UX/bootstrap/assets/v.0.4.6/images/banner_img2.png" alt="State Agency Listing" /></a>
+	   <!-- search graphic-->
+	   	<a class="ux-no-track" onclick="document.getElementById('sw_searchbox').style.visibility= 'visible'; document.getElementById('searchgraphic').style.visibility= 'hidden';" href="#">
+	   	<img alt="Search all of NY.gov" src="https://labor.ny.gov/css/apps/v.0.4.6/images/banner_img3.png" style="float: right; border: medium none; visibility: hidden;" id="searchgraphic"></a>
+	    <!--state wide search box-->
+	    <form method="get" action="http://www.search.cio.ny.gov/search" target="_blank" style="float: right; position: relative; top: 2px; left: 155px; visibility: visible;" id="sw_searchbox">
+	    	<p>
+
+	       	<input type="hidden" name="sort" value="date:D:L:d1" />
+	          <input type="hidden" name="output" value="xml_no_dtd" />
+	          <input type="hidden" name="ie" value="UTF-8" />
+	          <input type="hidden" name="oe" value="UTF-8" />
+	          <input type="hidden" name="client" value="default_frontend" />
+	          <input type="hidden" name="proxystylesheet" value="default_frontend" />
+	          <input type="hidden" name="site" value="default_collection" />
+	             
+	          <label for="searchbox"><input type="text" title="Search" id="searchbox" maxlength="256" name="q" size="15" style="position: relative; top: -10px; cursor: pointer;"></label>
+	          <label for="searchbutton"><input type="submit" value="Search NY.GOV" id="searchbutton" style="position: relative; width: 110px; top: -10px;"></label>
+
+	     	 </p>
+	    </form>
+	   <!--end wide search box-->
+      <script type="text/javascript">
+          // If JavaScript is on, manipulate search control objects.  
+          // Otherwise this will be ignored and search controls will be shown by default
+          document.getElementById('sw_searchbox').style.visibility = 'hidden';
+          document.getElementById('searchgraphic').style.visibility= 'visible';         
+      </script> 
+	</div>
+	</div>
+	
+	
+	<div id="dol-header" class="container_16">
+	<h1 id="dol-header-nys-labor" class="notranslate"> 
+
+
+	<a href="http://www.labor.ny.gov" class="accessibility-text">New York State Department of Labor</a>
+	<span id="dol-header-application">
+	
+	
+		Employment and Workforce Solutions
+	
+	
+	</span>
+	
+	</h1>
+
+	<div id="dol-header-user" class="notranslate">
+
+		<a href="#" class="ux-popover">My Account</a> | 
+		<div class="ux-popover-container" >
+		    <ul>
+		        <li><a href="https://applicationstest.labor.state.nyenet/Individual">Personal Account</a></li>
+		        <li><a href="/ui/employerinfo/EmployerHomePageLanding.shtm">Business Account</a></li>
+		    </ul>
+		</div>
+
+		<a href="/home/a-z-index.shtm" >A-Z Index</a>
+		
+ 
+
+	
+		<span class="ux-hide-nojs ux-hide-ie6"> | <a href="#" title="Google" class="gtranslate-link">Translate</a></span>
+	
+</div>
+
+	
+	 			<div id="site-wide-search">
+					<form name="_ipsubmit" id="search-box-form" method="get" action="http://www.search.cio.ny.gov/search" autocomplete="off">
+						<label for="q" id="search-label" class="accessibility-text">Search Department of Labor:</label>
+						<input type="text" id="q" name="q" value="" size="21" title="Input Search" class="text_box site-wide-search-text-box" placeholder="Search DOL" autocomplete="off" />
+						<input type="submit" title="Submit Search" value="GO" name="submit" class="submit site-wide-search-button accessibility-text" id="search-submit" />
+						<input type="hidden" name="entqr" value="0" />
+						<input type="hidden" name="ud" value="1" />
+						<input type="hidden" name="sort" value="date:D:L:d1" />
+
+						<input type="hidden" name="output" value="xml_no_dtd" />
+						<input type="hidden" name="oe" value="UTF-8" />
+						<input type="hidden" name="ie" value="UTF-8" />
+						<input type="hidden" name="client" value="labor_frontend" />
+						<input type="hidden" name="proxystylesheet" value="labor_frontend" />
+						<input type="hidden" name="site" value="labor_collection" /> 
+					</form>
+	 			</div>
+		
+ 	<div id="header-mega-menu">
+
+   	<div id="mega-menu">
+		<a id="mega-menu-anchor"></a>
+   		<ul id="menu" class="notranslate">
+   			<li id="home" class="top-level"><a href="/">Home</a></li>
+	   			<li id="tab-individuals" class="top-level">
+	   				<a href="/main/jobseekers-and-employees.asp " id="jobseekers" class="">Jobseekers &amp; Employees</a>
+	   			</li>
+	   			<li id="tab-businesses" class="top-level">
+	   				<a href="/main/businesses-and-employers.asp " id="businesses" class="">Businesses &amp; Employers</a>
+	   			</li>
+	   			<li id="tab-research" class="top-level">
+	   				<a href="/main/community-and-workforce-partners.asp" id="community" class="">Community &amp; Workforce Partners</a>
+	   			</li>
+	   			<li id="tab-other" class="top-level">
+	   				<a href="/main/programs-and-services.asp " id="programs" >Programs &amp; Services</a>
+	   			</li>
+   			</ul>
+   	</div>
+	</div>
+	
+</div> 
+
+<div id="page-wrap" class="group">
+	<div id="content" class="container_16 group">
+				<noscript>
+					<div class="grid_16">
+					<p class=" ux-msg warning margin-bottom-none">
+						<strong>JavaScript is currently disabled in your web browser. </strong> 
+							<br />For full functionality of this site, it is necessary to enable JavaScript. 
+							Here are <a href="http://www.enable-javascript.com/" target="_blank">
+ 							instructions how to enable JavaScript</a>.
+					<p>
+					</div>	
+				</noscript>
+		 
+
+	
+			<div class="grid_16 ux-content-grid">
+				<a id="content-anchor"></a>
+				<div id="page-info">
+					<ul class="dol-breadcrumbs group">
+						<li><a href="http://www.labor.ny.gov">Home</a></li>
+						<li>Google Map Prototype</li>
+					</ul>
+				</div>
+				<h2>Google Map Prototype</h2>
+		
+<!-- ====================== -->	
+<div id="map_canvas"></div>
+
+<ul>
+<li>
+	<a href="#" class="clickAddress">1400 Washington Ave, Albany, NY 12222</a>
+</li>
+<li>
+	<a href="#" class="clickAddress">200 Grand St, New York, NY 10013</a>
+</li>
+</ul>
+
+<!-- ====================== -->
+
+		</div>
+	</div> <!-- end #content -->
+</div>	 <!-- end #page-wrap -->
+
+<div id="dol-footer" class="group">
+
+  			<div id="dol-footer-inner" class="container_16 mega-foot-top">
+  				
+  				<div class="grid_3 mega-foot-top">
+  					<h4>About Us</h4>
+  					<ul class="footer-list">
+  						<li><a href="/about/">Overview</a></li>
+  						<li><a href="/about/history.shtm">Our History</a></li>
+              <li><a href="/about/services.shtm">Our Services</a></li>
+  					</ul>	
+
+            <h4>Divisions</h4>
+            <ul class="footer-list">
+              <li><a href="/dews-index.shtm">Employment &amp; <br/>Workforce Solutions</a></li>
+              <li><a href="/equal-opportunity/index.shtm">Equal Opportunity</a></li>
+              <li><a href="/immigrants">Immigrant Policies &amp; Affairs</a></li>
+              <li><a href="/stats/index.shtm">Research &amp; Statistics</a></li>
+              <li><a href="/legal/">Legal</a></li>
+              <li><a href="/information-technology/index.shtm">Planning &amp; Technology</a></li>
+              <li><a href="/ui/ui_index.shtm">Unemployment Insurance</a></li>
+              <li><a href="/workerprotection/wp_index.shtm">Worker Protection</a></li>
+
+            </ul> 
+  			</div>
+  				
+ 				
+  				
+        <div class="grid_3 mega-foot-top" >
+
+  					<h4>Boards</h4>
+   					<ul class="footer-list">
+              <li><a href="/erb/index.shtm">Employment Relations Board</a></li>
+              <li><a href="/hab/index.htm">Hazard Abatement Board</a></li>
+              <li><a href="/iba/index.asp">Industrial Board of Appeals</a></li>
+              <li><a href="/workforcenypartners/lwia.shtm">Local Workforce <br />Investment Boards</a></li>
+              <li><a href="/workforce/swib/SWIBAbout.shtm">State Workforce <br />Investment Board</a></li>
+  						<li><a href="/ui-appeal/">Unemployment Insurance <br/>Appeal Board</a></li>
+  					</ul>
+
+        </div> 
+
+   		<div class="grid_2 mega-foot-top" style="margin-top: 0; position:relative; left: 35px;">
+  					<h4>Newsroom</h4>
+   					<ul class="footer-list">
+  						<li><a href="/pressreleases/pressreleases.shtm">Press Releases &amp; Public Notices</a></li>
+                                                <li><a href="/agencyinfo/publicmeeting.shtm">Public Meetings</a></li>
+  						<li><a href="/workforcenypartners/warn/warnportal.shtm">WARN Notices</a></li>   
+  						<!--<li><a href="http://laborbuzz.labor.ny.gov">Labor Buzz Blog</a></li>-->						 						
+  					</ul>
+
+             <h4>Initiatives</h4>
+             <ul class="footer-list">
+	      <li><a href="/apprenticeship/appindex.shtm">Apprenticeship</a></li>
+              <li><a href="http://careerzone.ny.gov">CareerZone</a></li>
+              <li><a href="http://www.greencareersny.com">Green Jobs</a></li>
+              <li><a href="http://jobzone.ny.gov">JobZone</a></li>
+	      <li><a href="http://nyworks.ny.gov/">Regional Economic Development Councils</a></li>
+              <li><a href="http://ridesafeny.com">Ride Safe NY</a></li>
+	      <li><a href="/ui/employerinfo/shared-work-program.shtm">Shared Work</a></li>
+              <li><a href="/youth">Youth Portal</a></li>
+
+           </ul> 
+
+  		</div>        
+
+
+
+  		<div id="dol-footer-contact-wrapper" class="grid_8 mega-foot-top">		
+	   	<div id="ux-footer-dol-contact" class="alpha omega grid_4 prefix_2 ">
+	   					
+	   					<h4>Contact Us</h4>
+
+							<h5>Unemployment Assistance</h5>
+							<p class="group"><a class="button_mini telephone" href="/ui/claimantinfo/ContactInfo.shtm">Phone</a><a class="button_mini email" href="/ui/claimantinfo/ContactInfo.shtm">E-mail</a></p>
+							
+							<h5 style="clear:both; margin-top: 15px;">General Inquiry</h5>
+
+	   				<ul id="footer-phone" class="footer-list margin-bottom group">
+  						<li>(518) 457-9000</li>
+  						<li>(888) 4-NYSDOL (888-469-7365)</li>
+  						<li>(800) 662-1220 (TTY/TTD) </li>
+  						<li id="contact-buttons"><a class="button_mini email" href="/secure/contact">E-mail</a></li>
+  					</ul>
+
+              <p class="ux-clear">NYS Department of Labor<br/>
+              Building 12<br/>
+              W.A. Harriman Campus<br/>
+              Albany, NY 12240
+              </p>
+
+	   	
+	   				 
+
+	  	</div>  	
+	  	
+	  	  <div style="overflow: visible;" class="grid_2 mega-foot-top alpha" >
+
+	  	             			
+  						<a class="button flag" style="width: 85px; margin-left: -10px;" href="/agencyinfo/report-fraud.shtm">Report Fraud</a>
+  		 </div>				
+
+          <div id="dol-footer-policies" class="grid_2 " >
+
+  	   					<ul class="footer-list alpha omega">
+                  <li><a href="https://www.labor.ny.gov/secure/foilrequest.shtm">FOIL Request</a></li>
+    							<li><a href="/agencyinfo/accessibility.shtm">Accessibility Policy</a></li>
+    							<li><a href="/privacy.shtm">Privacy Policy</a></li>
+    							<li><a href="/utilities/document-readers.shtm">Get Adobe Reader</a></li>
+  	  					</ul>
+
+          </div> 
+  				
+
+          <div class="grid_2 alpha  " >
+
+
+
+  	   					<ul class="footer-list" id="stay-connected"> 
+  	  						<li><a href="http://www.facebook.com/nyslabor" id="facebook" target="_blank" class="ux-no-link-icon">Facebook</a></li>
+  	  						<li><a href="http://www.youtube.com/user/NYSLabor" id="youtube" target="_blank" class="ux-no-link-icon">YouTube</a></li>
+  	  						<li><a href="http://twitter.com/nyslabor" id="twitter" target="_blank" class="ux-no-link-icon">Twitter</a></li>
+  	  						<li><a href="http://www.flickr.com/photos/nyslabor/" id="flickr" target="_blank" class="ux-no-link-icon">Flickr</a></li>
+  	  					</ul>
+
+          </div> 				
+        
+      
+			
+			</div>
+			
+  			<p id="dol-footer-equal" class="align-right margin-top grid_16">The New York State Department of Labor is an Equal Opportunity Employer/Program. Auxiliary aids and services are available upon request to individuals with disabilities.</p>
+			
+			</div>  <!-- end grid_7 -->
+  				
+  	
+  				
+
+
+
+
+</div> <!-- end #footer -->
+
+	<script src="https://labor.ny.gov/css/apps/v.0.4.6/js/ux-script.min.js"></script>
+	<script src="http://10.72.88.71/css/apps/js/ux-internet-content-utility.js"></script>
+	
+	
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script>
+$(document).ready(function() {
+	
+	var gMap;
+	var gGeoCoder = new google.maps.Geocoder();
+	var gMarkersArray = [];
+	function initialize() {
+		var gMapOptions = {
+			zoom: 7,
+			center: new google.maps.LatLng(43, -76),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		gMap = new google.maps.Map(document.getElementById('map_canvas'),
+			gMapOptions);
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+	
+	function googleGeoCodeAddress( inputAddress) {
+		if (gMap == null) {
+			initialize();
+		}
+		gGeoCoder.geocode( { 'address': inputAddress}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				gMap.setCenter(results[0].geometry.location);
+				gMap.setZoom(12);
+				gMapMarker = new google.maps.Marker({
+					map: gMap,
+					position: results[0].geometry.location
+					});
+					
+				gMarkersArray.push(gMapMarker);
+				
+			} else {
+				alert('Geocode was not successful for the following reason: ' + status);
+			}
+		});
+      }
+	
+	// extend clear function
+	google.maps.Map.prototype.clearOverlays = function() {
+	if (gMarkersArray) {
+		for (var i = 0; i < gMarkersArray.length; i++ ) {
+			gMarkersArray[i].setMap(null);
+			}
+		}
+	}
+	//googleGeoCodeAddress( "1400 Washington Ave, Albany, NY 12222" );
+	
+	
+	$(".clickAddress").on('click', function() {
+		gMap.clearOverlays();
+		googleGeoCodeAddress( $(this).text() );
+	});
+});
+	
+
+	
+</script>
+
+
+
+
+	<!--[if (gt IE 6)|!(IE)]><!--> 
+		<script src="http://10.72.88.71/css/apps/ux-data/live-menu.js?date=20120622"></script>
+		<script src="http://www.labor.ny.gov/css/apps/v.0.4.6/js/mega-menu.min.js"></script>
+	<!--<![endif]-->
+
+	</body>
+</html> 
